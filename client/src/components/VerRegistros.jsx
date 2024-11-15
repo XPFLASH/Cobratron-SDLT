@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { obtenerUsuarios, obtenerAdeudos, obtenerPagos, crearAdeudo, crearPago } from '../utils/api.js';
+import PagoItem from './RealizarPago.jsx';
 import '../styles/verRegistro.css';
 
 const VerRegistros = () => {
@@ -194,16 +195,12 @@ const VerRegistros = () => {
           <h4>Pagos</h4>
           <ul className="pagos-list">
             {Array.isArray(pagos) && pagos.length > 0 ? (
-              pagos.map(pago => (
-                <li key={pago.id_pago}>
-                  Fecha: {new Date(pago.fecha_pago).toLocaleDateString()} - Monto: ${pago.monto_pago} - Estado: {pago.estado}
-                </li>
-              ))
-            ) : (
-              <li>No hay pagos para este adeudo</li>
-            )}
-          </ul>
-
+              pagos.map((pago) => (
+              <PagoItem key={pago.id_pago} pago={pago} onPagoRealizado={async () => {
+                const pagosActualizados = await obtenerPagos(selectedAdeudo.id_adeudo);
+                setPagos(pagosActualizados);
+             }}/>))) : (<li>No hay pagos para este adeudo</li>)}
+             </ul>
         </div>
       ) : (
         <div className="usuario-details">
@@ -271,7 +268,7 @@ const VerRegistros = () => {
           <ul className="adeudos-list">
             {obtenerAdeudosPorUsuario(selectedUsuario.id_usuario).map(adeudo => (
               <li key={adeudo.id_adeudo} onClick={() => handleAdeudoClick(adeudo)}>
-                {adeudo.nombre} - Monto Total: ${adeudo.monto_total}
+                {adeudo.nombre} - Monto Total: ${adeudo.monto_total} - Estado: {adeudo.estado}
               </li>
             ))}
           </ul>

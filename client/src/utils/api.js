@@ -12,16 +12,15 @@ export const obtenerAdeudos = () => axios.get(`${API_URL}/adeudos`);
 
 // Pagos
 export const crearPago = (data) => axios.post(`${API_URL}/pagos`, data);
-
-export const obtenerPagosPorUsuario = (id_usuario) => axios.get(`${API_URL}/usuarios/${id_usuario}/pagos`);
-
-export const obtenerPagos = async (id_adeudo) => {
-    try {
+export const obtenerPagos = async (id_adeudo) =>  {
       const response = await axios.get(`http://localhost:3001/api/pagos/${id_adeudo}`);
       return response.data; 
-    } catch (error) {
-      console.error('Error al obtener pagos:', error);
-      return [];
-    }
   };
+export const realizarPago = async (id_pago, monto_pagado) => {
+      const response = await axios.patch(`http://localhost:3001/api/pagos/${id_pago}`, { monto_pagado });
+      return response.data;
+    } 
+    
+
+  
   
