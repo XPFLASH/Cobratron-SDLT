@@ -212,56 +212,77 @@ const VerRegistros = () => {
 
           {mostrarFormularioAdeudo && (
             <form onSubmit={handleGenerarNuevoAdeudo} className="nuevo-adeudo-form">
-              <h4>Nuevo Adeudo</h4>
-              <input
-                type="text"
-                name="nombre"
-                placeholder="Nombre del Adeudo"
-                value={nuevoAdeudo.nombre}
-                onChange={handleNuevoAdeudoChange}
-                required
-              />
-              <input
-                type="date"
-                name="fechaInicial"
-                placeholder="Fecha Inicial"
-                value={nuevoAdeudo.fechaInicial}
-                onChange={handleNuevoAdeudoChange}
-                required
-              />
-              <input
-                type="number"
-                name="montoTotal"
-                placeholder="Monto Total"
-                value={nuevoAdeudo.montoTotal}
-                onChange={handleNuevoAdeudoChange}
-                required
-              />
-              <select name="frecuencia" value={nuevoAdeudo.frecuencia} onChange={handleNuevoAdeudoChange}>
-                <option value="Semanal">Semanal</option>
-                <option value="Mensual">Mensual</option>
-                <option value="Trimestral">Trimestral</option>
-                <option value="Semestral">Semestral</option>
-                <option value="Anual">Anual</option>
-              </select>
-              <input
-                type="number"
-                name="cantidadFrecuencia"
-                placeholder="Cantidad de Frecuencia"
-                value={nuevoAdeudo.cantidadFrecuencia}
-                onChange={handleNuevoAdeudoChange}
-                required
-              />
-              <div>
+            <h4>Nuevo Adeudo</h4>
+          
+            <div className="form-row">
+              <div className="form-field">
+                <input
+                  type="text"
+                  name="nombre"
+                  placeholder="Nombre del Adeudo"
+                  value={nuevoAdeudo.nombre}
+                  onChange={handleNuevoAdeudoChange}
+                  required
+                />
+              </div>
+              <div className="form-field">
+                <input
+                  type="date"
+                  name="fechaInicial"
+                  placeholder="Fecha Inicial"
+                  value={nuevoAdeudo.fechaInicial}
+                  onChange={handleNuevoAdeudoChange}
+                  required
+                />
+              </div>
+              <div className="form-field">
+                <input
+                  type="number"
+                  name="montoTotal"
+                  placeholder="Monto Total"
+                  value={nuevoAdeudo.montoTotal}
+                  onChange={handleNuevoAdeudoChange}
+                  required
+                />
+              </div>
+            </div>
+          
+            <div className="form-row">
+              <div className="form-field">
+                <select name="frecuencia" value={nuevoAdeudo.frecuencia} onChange={handleNuevoAdeudoChange}>
+                  <option value="Semanal">Semanal</option>
+                  <option value="Mensual">Mensual</option>
+                  <option value="Trimestral">Trimestral</option>
+                  <option value="Semestral">Semestral</option>
+                  <option value="Anual">Anual</option>
+                </select>
+              </div>
+              <div className="form-field">
+                <input
+                  type="number"
+                  name="cantidadFrecuencia"
+                  placeholder="Cantidad de Frecuencia"
+                  value={nuevoAdeudo.cantidadFrecuencia}
+                  onChange={handleNuevoAdeudoChange}
+                  required
+                />
+              </div>
+            </div>
+          
+            <h4>Resumen del Adeudo</h4>
+            <div className="form-row">
+              <div className="form-field">
                 <label>Fecha Final Calculada:</label>
                 <input type="text" value={nuevoAdeudo.fechaFinal} readOnly />
               </div>
-              <div>
+              <div className="form-field">
                 <label>Monto por Pago Calculado:</label>
                 <input type="text" value={nuevoAdeudo.montoPorPago} readOnly />
               </div>
-              <button type="submit">Crear Adeudo</button>
-            </form>
+            </div>
+          
+            <button type="submit">Crear Adeudo</button>
+          </form>          
           )}
 
           <h4>Adeudos:</h4>

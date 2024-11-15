@@ -4,7 +4,7 @@ import '../styles/home.css';
 const Home = () => (
   <div className="home-container">
     <h2>Bienvenido a Cobratron</h2>
-    <p>Utiliza el menú para navegar y gestionar clientes, adeudos y pagos.</p>
+    <p>Sistema para gestionar los adeudos y pagos de los clientes</p>
   </div>
 );
 
