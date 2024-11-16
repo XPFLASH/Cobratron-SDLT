@@ -6,7 +6,7 @@ const PagoItem = ({ pago, onPagoRealizado }) => {
 
   const handlePago = async () => {
     if (!montoPagado || montoPagado < pago.monto_pago) {
-      alert('Por favor ingresa un monto válido');
+      alert('Por favor ingresa un monto válido (Ejem. 100.00)');
       return;
     }
 
